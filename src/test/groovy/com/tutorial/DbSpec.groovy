@@ -19,5 +19,6 @@ class DbSpec extends Specification{
 
         then:
             2 == a.size()
+
     }
 }
