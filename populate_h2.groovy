@@ -17,7 +17,7 @@ def init() {
     drivers << new DriverGroovy(name: 'Dale Enhardt Jr', number: 88, averageFinish: 13.2, careerWins: 98)
 
     Sql db = Sql.newInstance(
-            url: 'jdbc:h2:8090/drivers', driver: 'org.h2.Driver')
+            url: 'jdbc:h2:groovy-vs-java-h2-db/drivers', driver: 'org.h2.Driver')
 
     db.execute "drop table if exists driver_data;"
     db.execute '''
