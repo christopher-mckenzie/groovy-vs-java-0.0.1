@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
 apply plugin: 'java'
+apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
@@ -10,7 +11,14 @@ repositories {
     mavenCentral()
 }
 
+//compileTestGroovy.dependsOn 'configureH2'
 
+//task configureH2(dependsOn: 'classes', type: JavaExec) {
+//    description 'populates the H2 databasse used for groovy tests'
+//    println "$project.projectDir\\src\\main\\groovy\\com\\tutorial\\script\\populate_h2"
+//    main "${project.projectDir}\\src\\main\\groovy\\com\\tutorial\\script\\populate_h2"
+//    classpath sourceSets.main.runtimeClasspath
+//}
 dependencies {
     runtime 'com.h2database:h2:1.2.140'
     compile 'org.codehaus.groovy:groovy-all:2.3.11'

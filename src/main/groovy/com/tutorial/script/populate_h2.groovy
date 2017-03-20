@@ -1,4 +1,4 @@
-package com.tutorial
+package com.tutorial.script
 
 import com.tutorial.bean.DriverGroovy
 import groovy.sql.Sql
@@ -7,7 +7,7 @@ import groovy.sql.Sql
  * Created by cmcke on 3/12/2017.
  */
 
-def init() {
+//def main(String[] args) {
     def drivers = []
     drivers << new DriverGroovy(name: 'Dale Enhardt Jr', number: 88, averageFinish: 13.2, careerWins: 98)
     drivers << new DriverGroovy(name: 'Dale Enhardt Jr', number: 88, averageFinish: 13.2, careerWins: 98)
@@ -40,4 +40,4 @@ def init() {
     }
 
     assert db.rows('select * from driver_data').size() == drivers.size()
-}
+//}
