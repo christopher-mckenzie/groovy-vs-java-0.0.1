@@ -14,6 +14,8 @@ class SwingGui {
 
     def static void main(def args){
         def driver = new DriverGroovy()
+        DriverGroovyDao.insertDrivers(new ArrayList<DriverGroovy>())
+        DriverGroovyDao.loadDrivers()
         new SwingBuilder().edt {
             lookAndFeel 'nimbus'
             frame(title: 'test-data', defaultCloseOperation: JFrame.EXIT_ON_CLOSE, size: [400, 450],locationRelativeTo: null, show: true) {
@@ -41,16 +43,16 @@ class SwingGui {
                 }
                 panel(constraints: BorderLayout.SOUTH) {
                     button text: 'save', actionPerformed: {
-                        def nameFinal = nameField.text
-                        def numFinal = Integer.parseInt numberField.text
-                        def averageFinal = Double.parseDouble averageFinishField.text
-                        def careerFinal = Integer.parseInt careerWinsField.text
-                        driver = new DriverGroovy(name: nameFinal, number: numFinal, averageFinish: averageFinal, careerWins: careerFinal)
-                        new DriverGroovyDao().insertDriver(driver)
-                        println driver
+                        saveDriver nameField.text, Integer.parseInt(numberField.text), Double.parseDouble(averageFinishField.text), Integer.parseInt(careerWinsField.text)
+
                     }
                 }
             }
         }
+    }
+    def static saveDriver(String name, int number, double averageFinish, int careerWins){
+        def driver = new DriverGroovy(name: name, number: number, averageFinish: averageFinish, careerWins: careerWins)
+        new DriverGroovyDao().insertDriver driver
+        println "driver saved: $driver"
     }
 }
