@@ -2,7 +2,6 @@ group 'groovy-vs-java'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'
-apply plugin: 'java'
 apply plugin: 'idea'
 
 sourceCompatibility = 1.8
@@ -11,16 +10,16 @@ repositories {
     mavenCentral()
 }
 
-//compileTestGroovy.dependsOn 'configureH2'
+compileTestGroovy.dependsOn 'configureH2'
 
-//task configureH2(dependsOn: 'classes', type: JavaExec) {
-//    description 'populates the H2 databasse used for groovy tests'
-//    println "$project.projectDir\\src\\main\\groovy\\com\\tutorial\\script\\populate_h2"
-//    main "${project.projectDir}\\src\\main\\groovy\\com\\tutorial\\script\\populate_h2"
-//    classpath sourceSets.main.runtimeClasspath
-//}
+task configureH2(dependsOn: 'classes', type: JavaExec) {
+    description 'populates the H2 databasse used for groovy tests'
+    println "populate_h2.groovy"
+    main "populate_h2"
+    classpath sourceSets.main.runtimeClasspath
+}
 dependencies {
-    runtime 'com.h2database:h2:1.2.140'
+    compile 'com.h2database:h2:1.2.140'
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile 'org.spockframework:spock-core:1.0-groovy-2.4'
     compile 'mysql:mysql-connector-java:5.1.34'

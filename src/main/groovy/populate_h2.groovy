@@ -1,4 +1,4 @@
-package com.tutorial.script
+
 
 import com.tutorial.bean.DriverGroovy
 import groovy.sql.Sql
