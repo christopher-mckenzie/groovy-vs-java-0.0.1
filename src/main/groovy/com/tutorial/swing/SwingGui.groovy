@@ -11,11 +11,9 @@ import java.awt.BorderLayout
  * Created by req85404 on 03/21/2017.
  */
 class SwingGui {
-
+    static List<DriverGroovy> drivers;
     def static void main(def args){
-        def driver = new DriverGroovy()
-        DriverGroovyDao.insertDrivers(new ArrayList<DriverGroovy>())
-        DriverGroovyDao.loadDrivers()
+        drivers = new DriverGroovyDao().loadDrivers()
         new SwingBuilder().edt {
             lookAndFeel 'nimbus'
             frame(title: 'test-data', defaultCloseOperation: JFrame.EXIT_ON_CLOSE, size: [400, 450],locationRelativeTo: null, show: true) {
@@ -42,17 +40,23 @@ class SwingGui {
                     }
                 }
                 panel(constraints: BorderLayout.SOUTH) {
-                    button text: 'save', actionPerformed: {
-                        saveDriver nameField.text, Integer.parseInt(numberField.text), Double.parseDouble(averageFinishField.text), Integer.parseInt(careerWinsField.text)
+                    button text: 'next', actionPerformed: {
+                        addDriver nameField.text, Integer.parseInt(numberField.text), Double.parseDouble(averageFinishField.text), Integer.parseInt(careerWinsField.text)
 
+                    }
+                    button text: 'save', actionPerformed: {
+                        saveDrivers()
                     }
                 }
             }
         }
     }
-    def static saveDriver(String name, int number, double averageFinish, int careerWins){
-        def driver = new DriverGroovy(name: name, number: number, averageFinish: averageFinish, careerWins: careerWins)
-        new DriverGroovyDao().insertDriver driver
-        println "driver saved: $driver"
+    def static addDriver(String name, int number, double averageFinish, int careerWins){
+        drivers << new DriverGroovy(name: name, number: number, averageFinish: averageFinish, careerWins: careerWins)
+        println "driver added: ${drivers.get(drivers.size() - 1)}"
     }
+    def static saveDrivers(){
+        new DriverGroovyDao().insertDrivers drivers
+    }
+
 }
