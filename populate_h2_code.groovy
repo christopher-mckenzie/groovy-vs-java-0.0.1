@@ -5,8 +5,8 @@ import groovy.sql.Sql
  * Created by cmcke on 3/12/2017.
  * Example script to load data into a local database before compiling tests - script can be called within another class, gradle, or independently
  */
-
-   def drivers = new DriverGroovyDao().loadDrivers()
+def init() {
+    def drivers = new DriverGroovyDao().loadDrivers()
 
     Sql db = Sql.newInstance(
             url: 'jdbc:h2:groovy-vs-java-h2-db/drivers', driver: 'org.h2.Driver')
@@ -30,5 +30,6 @@ import groovy.sql.Sql
         values(${driver.name},${driver.number},${driver.averageFinish},${driver.careerWins});
     """
     }
+}
 
     assert db.rows('select * from driver_data').size() == drivers.size()

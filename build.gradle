@@ -19,7 +19,7 @@ task configureH2(dependsOn: 'classes', type: JavaExec) {
     classpath sourceSets.main.runtimeClasspath
 }
 dependencies {
-    compile 'com.h2database:h2:1.2.140'
+    runtime 'com.h2database:h2:1.2.140'
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile 'org.spockframework:spock-core:1.0-groovy-2.4'
     compile 'mysql:mysql-connector-java:5.1.34'

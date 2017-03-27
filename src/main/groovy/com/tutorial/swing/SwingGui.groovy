@@ -9,6 +9,9 @@ import java.awt.BorderLayout
 
 /**
  * Created by req85404 on 03/21/2017.
+ * Example of creating a swing ui - created to play around with
+ * main method will load drivers from json then present a ui to add new ones, then on save writes entire list to file for preservation
+ * possible use case- easy way to insert data into a file
  */
 class SwingGui {
     static List<DriverGroovy> drivers;

@@ -4,6 +4,7 @@ import groovy.transform.Immutable
 
 /**
  * Created by req85404 on 03/20/2017.
+ * Example for using @Immutable - used to enforce final or only setting variables once
  */
 @Immutable
 class ImmutableGroovy {

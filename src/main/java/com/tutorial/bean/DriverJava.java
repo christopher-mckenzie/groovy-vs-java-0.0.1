@@ -2,6 +2,7 @@ package com.tutorial.bean;
 
 /**
  * Created by cmcke on 3/11/2017.
+ * Sample to show differences between a POGO and a POJO
  */
 public class DriverJava {
     private String name;

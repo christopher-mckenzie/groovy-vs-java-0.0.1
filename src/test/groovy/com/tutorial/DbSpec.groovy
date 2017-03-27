@@ -8,17 +8,15 @@ import spock.lang.Specification
  */
 class DbSpec extends Specification{
 
+//example of how to call a groovy script within code
+    def "configure db test"(){
+        when:
+        GroovyShell shell = new GroovyShell()
+        def script = shell.parse(new File('populate_h2_code.groovy'))
+        script.init()
 
-//    def "configure db test"(){
-//        given:
-//            def a = 'lo'
-//        when:
-//        GroovyShell shell = new GroovyShell()
-//        def script = shell.parse(new File('populate_h2.groovy'))
-//        script.init()
-//
-//        then:
-//            2 == a.size()
-//
-//    }
+        then:
+            assert true
+
+    }
 }

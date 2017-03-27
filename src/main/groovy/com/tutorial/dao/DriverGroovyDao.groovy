@@ -7,6 +7,7 @@ import groovy.sql.Sql
 
 /**
  * Created by req85404 on 03/21/2017.
+ * Sample to read and write json to a file (use case- store json for testing)
  */
 class DriverGroovyDao {
 
